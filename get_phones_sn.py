@@ -34,16 +34,16 @@ def sn(ip, model, num, desc):
     Out = {'ip': ip, 'model': model, 'num': num, 'desc': desc}
     Address = SnRegex = Sn = ''
     if (model == 'Cisco 7811') or (model == 'Cisco 7861'):
-        Address = 'http://' + ip + '/CGI/Java/Serviceability'
+        Address = 'http://{}/CGI/Java/Serviceability'.format(ip)
         SnRegex = '</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
     elif model == 'Cisco 3905':
-        Address = 'http://' + ip + '/Device_Information.html'
+        Address = 'http://{}/Device_Information.html'.format(ip)
         SnRegex = '<td><p><b>([A-Z]{3}\w{8})</b></p></td>'
     elif (model == 'Cisco 6961') or (model == 'Cisco 6921'):
-        Address = 'http://' + ip
+        Address = 'http://{}'.format(ip)
         SnRegex = '</TD><TD><strong>([A-Z]{3}\w{8})</strong></TD>'
     else:
-        Address = 'http://' + ip
+        Address = 'http://{}'.format(ip)
         SnRegex = '</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
 
     if (model == 'Cisco Jabber') or (model == 'Third-party SIP Device'):
@@ -71,7 +71,7 @@ Devices = cucm_rt_phones(model = args.model, num = args.num, name = args.name, i
                          max = args.max, Print = False)
 Devices = sorted(Devices, key=lambda k: k['ip'])
 # Run sn extraction
-with ThreadPoolExecutor(max_workers=20) as executor:
+with ThreadPoolExecutor(max_workers=30) as executor:
     Result = executor.map(sn,
         (i['ip'] for i in Devices), (j['model'] for j in Devices), (k['num'] for k in Devices), (l['desc'] for l in Devices))
 Devices_ext = list(Result)
