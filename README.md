@@ -1,5 +1,4 @@
 ### Introduction
-Cisco IP phone inventory tool (aka serial grabber).  
 Retrieves registered phones list from CUCM, connects to each by web interface and parses serial number. The main advantage is that it can work with any phone model supporting web access (slight code changing might be required). Relatively fast, processing 1000 phones less than 25 sec.
 
 Currently tested phone models:
