@@ -16,7 +16,7 @@ On client computer you need to have Python interpreter v3.4+. Additional modules
 `https://cucm-ip:8443/realtimeservice2/services/RISService70?wsdl`.
 
 ### Usage
-Starting from 9 version, CUCM AXL response is limited to 1000 items. If you have more than 1000 active devices, you need to split you request into smaller ones grouped by number, name, model or IP (only one parameter at time).  
+Starting from 9 version, CUCM AXL response is limited to 1000 items. If you have more than 1000 active devices, you need to split you request into smaller ones grouped by number, name or IP (either one at time) and model.  
 `python .\get_phones_sn.py -num 1*` - phones with number starting from 1  
 `python .\get_phones_sn.py -name SEP*` - all hardware phones  
 `python .\get_phones_sn.py -model 621` - internal Cisco model number is used, see [RisPort70 API Reference](https://developer.cisco.com/docs/sxml/#risport70-api-reference)  
