@@ -23,7 +23,7 @@ Starting from 9 version, CUCM AXL response is limited to 1000 items. If you have
 `python .\get_phones_sn.py -ip 192.168.* -max 10` - phones in 192.168.0.0/16 network, limit to 10 items  
 `python .\get_phones_sn.py -noprint` - noprint option is used when you want to minimize screen output. Errors and summary info will be shown anyway.  
 
-Results will be saved to _serials.txt file which could be threated as csv and easily converted to xls.
+Results are saving to _serials.txt file which could be treated as csv and easily converted to xls.
 
 ### P.S.
 There might be a dirty code because I'm not a developer. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com.
