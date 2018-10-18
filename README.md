@@ -3,7 +3,7 @@ Retrieves registered phones list from CUCM, connects to each by web interface an
 
 Currently tested phone models:
 ```
-Cisco 3905, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 8841, Cisco 8861, Cisco 6921, Cisco 6961
+Cisco 3905, Cisco 6921, Cisco 6961, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 8841, Cisco 8861
 ```
 
 ### Setup
@@ -26,4 +26,4 @@ Starting from 9 version, CUCM AXL response is limited to 1000 items. If you have
 Results will be saved to _serials.txt file which could be threated as csv and easily converted to xls.
 
 ### P.S.
-There might be a dirty code because I'm not a developer. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com
+There might be a dirty code because I'm not a developer. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com.
