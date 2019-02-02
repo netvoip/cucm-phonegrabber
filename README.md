@@ -7,7 +7,7 @@ Cisco 3905, Cisco 6921, Cisco 6961, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 88
 ```
 
 ### Setup
-On client computer you need to have Python interpreter v3.4+. Additional modules are installed by `pip install modulename` command if required.  
+On client computer you need to have Python interpreter v3.4+. Additional modules must be installed by `pip install modulename` command.  
 
 `Vars.conf` file should contain: 
 - IP address or hostname of UCM server with "Cisco AXL Web Service" service running, 
@@ -17,13 +17,17 @@ On client computer you need to have Python interpreter v3.4+. Additional modules
 
 ### Usage
 Starting from 9 version, CUCM AXL response is limited to 1000 items. If you have more than 1000 active devices, you need to split your request into smaller ones grouped by directory number, name or IP (only one parameter per request) and model.  
-`python .\get_phones_sn.py -num 1*` - phones with number starting from 1  
-`python .\get_phones_sn.py -name SEP*` - all hardware phones  
-`python .\get_phones_sn.py -model 621` - internal Cisco model number is used, see [RisPort70 API Reference](https://developer.cisco.com/docs/sxml/#risport70-api-reference)  
-`python .\get_phones_sn.py -ip 192.168.* -max 10` - phones in 192.168.0.0/16 network, limit to 10 items  
-`python .\get_phones_sn.py -noprint` - noprint option is used when you want to minimize screen output. Errors and summary info will be shown anyway.  
+`python get_phones_sn.py -num 1*` - phones with number starting from 1  
+`python get_phones_sn.py -name SEP*` - all hardware phones  
+`python get_phones_sn.py -model 621` - internal Cisco model number is used, see [RisPort70 API Reference](https://developer.cisco.com/docs/sxml/#risport70-api-reference)  
+`python get_phones_sn.py -ip 192.168.* -max 10` - phones in 192.168.0.0/16 network, limit to 10 items  
+`python get_phones_sn.py -noprint` - noprint option is used when you want to minimize screen output. Errors and summary info will be shown anyway.  
 
 Results are saving to _serials.txt file which could be treated as csv and easily converted to xls for further processing.
 
+### Web GUI
+Here is simple user interface based on Flask. Required packages: Flask, Flask_Bootstrap, Flask_WTF. Run it on WSGI server or locally by command:
+`python flask_start.py`
+
 ### P.S.
-There might be a dirty code in here because I'm not a developer. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com.
+There might be a dirty code in here. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com.

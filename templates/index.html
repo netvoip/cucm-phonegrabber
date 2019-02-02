@@ -1,0 +1,40 @@
+{% extends "bootstrap/base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %} Phone inventory {% endblock %}
+
+{% block content %}
+<p><form method="POST" role="form" action="">
+<div class="col-md-3">
+  {{ form.hidden_tag() }}
+  {{ wtf.form_errors(form, hiddens="only") }}
+  {{ wtf.form_field(form.num) }}
+  {{ wtf.form_field(form.model) }}
+  <center><input type="submit" class="btn btn-warning" value="Get"/></center>
+  <br><br><br>
+  <a href="javascript:sh()">Info</a><br />
+  <div id="info" style="padding-top:15px;">
+    <ul>
+        <li>Only active regisered phones are processing.
+        <li>Maximum device count is 1005. If you need more, use number dividing.
+        <li>Unsupported phones include Cisco Jabber, CIPC, mobile apps and third-party devices.
+        <li>Job running time can last up to 25 sec. Wait for complete page loading till making next request.
+  </div>
+  <script type="text/javascript">
+    sh();
+    function sh() {
+        obj = document.getElementById("info");
+        if( obj.style.display == "none" ) { obj.style.display = "block"; } else { obj.style.display = "none"; }
+    }
+  </script>
+</form>
+</div>
+
+
+<div>
+<b></b>
+<p><br><textarea cols=100 rows=40 readonly>
+     {{ maintext }}
+</textarea></p>
+</div>
+
+{% endblock %}
