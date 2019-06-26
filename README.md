@@ -8,6 +8,7 @@ Cisco 3905, Cisco 6921, Cisco 6961, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 88
 
 ### Setup
 On client computer you need to have Python interpreter v3.4+. Additional modules must be installed by `pip install modulename` command.  
+Project was migrated to zeep module for SOAP requests. Old version based on suds is still available.
 
 `Vars.conf` file should contain: 
 - IP address or hostname of UCM server with "Cisco AXL Web Service" service running, 
