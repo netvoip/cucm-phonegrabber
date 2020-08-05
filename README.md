@@ -7,7 +7,7 @@ Cisco 3905, Cisco 6921, Cisco 6961, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 88
 ```
 
 ### Setup
-On client computer you need to have Python interpreter v3.4+. Additional modules must be installed by `pip install modulename` command.  
+On client computer you need to have Python interpreter v3.4+. Additional modules must be installed by `pip install zeep` command.  
 Project was migrated to zeep module for SOAP requests. Old version based on suds is still available.
 
 `Vars.conf` file should contain: 
@@ -31,4 +31,4 @@ Here is simple user interface based on Flask. Required packages: Flask, Flask_Bo
 `python flask_start.py`
 
 ### P.S.
-There might be a dirty code in here. If you have any practical recommendations, suggestions or bug reports, feel free to contact me conftdowr@gmail.com.
+If your phone model is not supported or by any other questions contact me by conftdowr@gmail.com.
