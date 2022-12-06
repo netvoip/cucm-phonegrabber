@@ -3,41 +3,44 @@
 {% block title %} Phone inventory {% endblock %}
 
 {% block content %}
-<p><form method="POST" role="form" action="">
-<div class="container-fluid" style="margin-top:10px;">
-<div class="row">
-<div class="col col-sm-2 col-md-2 col-lg-2">
-  {{ form.hidden_tag() }}
-  {{ wtf.form_errors(form, hiddens="only") }}
-  {{ wtf.form_field(form.num) }}
-  {{ wtf.form_field(form.model) }}
-  <center><input type="submit" class="btn btn-warning" value="Get"/></center>
-  <br><br><br>
-  <a href="javascript:sh()">Info</a><br />
-  <div id="info" style="padding-top:15px;">
-    <ul>
-        <li>Only active regisered phones are processing.
-        <li>Maximum device count is 1000. If you need more, use number dividing.
-        <li>Unsupported phones include Cisco Jabber, CIPC, mobile apps and third-party devices.
-        <li>Job running time can last up to 30 sec. Wait for complete page loading till making next request.
+<p>
+  <div class="container-fluid" style="margin-top:10px;">
+    <div class="row">
+      <div class="col col-sm-2 col-md-2 col-lg-2">
+        <form method="POST" role="form" action="">
+          {{ form.hidden_tag() }}
+          {{ wtf.form_errors(form, hiddens="only") }}
+          {{ wtf.form_field(form.num) }}
+          {{ wtf.form_field(form.model) }}
+          <center><input type="submit" class="btn btn-warning" value="Get" /></center>
+          <br><br><br>
+          <a href="javascript:show()">Info</a><br />
+          <div id="info" style="padding-top:15px;">
+            <ul>
+              <li>Only active regisered phones are processing.
+              <li>Maximum device count is about 1000. If you need more, use number split.
+              <li>Unsupported phones include Cisco Jabber, CIPC, mobile apps and third-party devices.
+              <li>Job running time can last up to 30 sec. Wait for complete page loading till making next request.
+          </div>
+          <script type="text/javascript">
+            show();
+            function show() {
+              obj = document.getElementById("info");
+              if (obj.style.display == "none") {
+                obj.style.display = "block";
+              } else {
+                obj.style.display = "none";
+              }
+            }
+          </script>
+        </form>
+      </div>
+
+
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <p><br><textarea cols=100 rows=36 readonly>{{ maintext }}</textarea></p>
+      </div>
+    </div>
   </div>
-  <script type="text/javascript">
-    sh();
-    function sh() {
-        obj = document.getElementById("info");
-        if( obj.style.display == "none" ) { obj.style.display = "block"; } else { obj.style.display = "none"; }
-    }
-  </script>
-</form>
-</div>
 
-
-<div class="col-sm-6 col-md-6 col-lg-6">
-<p><br><textarea cols=100 rows=36 readonly>
-     {{ maintext }}
-</textarea></p>
-</div>
-</div>
-</div>
-
-{% endblock %}
+  {% endblock %}
