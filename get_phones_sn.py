@@ -60,7 +60,11 @@ def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print 
     session.auth = HTTPBasicAuth(axluser, axlpassword)
     transport = Transport(cache=SqliteCache(), session=session, timeout=5)
     history = HistoryPlugin()
-    client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
+    try:
+        client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
+    except ConnectionError:
+        riswsdl = vars['cucm']['riswsdl']
+        client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
 
     def show_history():
         for item in [history.last_sent, history.last_received]:
@@ -88,6 +92,9 @@ def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print 
 def modelname(modelnum=0):
     if modelnum == 336: return('Third-party SIP Device')
     elif modelnum == 503: return('Cisco Jabber')
+    elif modelnum == 36251: return('Cisco Webex Room Kit')
+    elif modelnum == 36254: return('Cisco Webex Room 55')
+    elif modelnum == 36255: return('Cisco Webex Room Kit Plus')
     elif modelnum == 592: return('Cisco 3905')
     elif modelnum == 36213: return('Cisco 7811')
     elif modelnum == 621: return('Cisco 7821')
@@ -107,6 +114,7 @@ def modelname(modelnum=0):
     elif modelnum == 431: return('Cisco 7937')
     elif modelnum == 30019: return('Cisco 7936 Conference')
     elif modelnum == 30007: return('Cisco 7912')
+    elif modelnum == 36225: return('Cisco 8865')
     elif modelnum == 36255: return('Cisco Spark')
     else:
         print('Undefined model name: {}'.format(modelnum))
@@ -143,7 +151,7 @@ def extract_sn(ip, model, num, desc):
         weburl = 'http://{}'.format(ip)
         sn_regex = r'</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
 
-    if (model == 'Cisco Jabber') or (model == 'Third-party SIP Device'):
+    if (model == 'Cisco Jabber') or (model == 'Third-party SIP Device') or ('Webex' in model) or ('Dual Mode' in model) or ('TelePresence' in model):
         sn = 'Not supported'
     else:
         html = gethtml(weburl)
