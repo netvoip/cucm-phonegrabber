@@ -8,7 +8,7 @@ Cisco 3905, Cisco 6921, Cisco 6961, Cisco 7811, Cisco 7821, Cisco 7861, Cisco 88
 If your phone is not listed, slight code changes might be required.
 
 ### Setup
-On client computer you need to have Python interpreter v3.4-3.12, recommended version is 3.11. Install required modules by `pip install -r requirements.txt` for console script only or `pip install -r requirements_flask.txt` for using console and web interface.
+On client computer you need to have Python interpreter v3.4-3.12, recommended version is 3.11. Install required modules by `python -m pip install -r requirements.txt` for console script only or `python -m pip install -r requirements_flask.txt` for using console and web interface.
 
 `vars.conf` file should contain:
 - IP address or hostname of UCM server with "Cisco AXL Web Service" service running,
