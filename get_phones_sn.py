@@ -31,6 +31,8 @@ axluser = vars['cucm']['axluser']
 axlpassword = vars['cucm']['axlpassword']
 cucmhost = vars['cucm']['ip']
 riswsdl = 'https://{}:8443/realtimeservice2/services/RISService70?wsdl'.format(cucmhost)
+# if file is downloaded locally uncomment line below
+#riswsdl = vars['cucm']['riswsdl']
 
 # Get phones info from cucm
 def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print = True):
@@ -60,11 +62,7 @@ def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print 
     session.auth = HTTPBasicAuth(axluser, axlpassword)
     transport = Transport(cache=SqliteCache(), session=session, timeout=5)
     history = HistoryPlugin()
-    try:
-        client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
-    except ConnectionError:
-        riswsdl = vars['cucm']['riswsdl']
-        client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
+    client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
 
     def show_history():
         for item in [history.last_sent, history.last_received]:
@@ -91,10 +89,12 @@ def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print 
 # Internal model number to human readable
 def modelname(modelnum=0):
     if modelnum == 336: return('Third-party SIP Device')
+    elif modelnum == 449: return('Cisco Dual Mode for iPhone')
     elif modelnum == 503: return('Cisco Jabber')
     elif modelnum == 36251: return('Cisco Webex Room Kit')
     elif modelnum == 36254: return('Cisco Webex Room 55')
     elif modelnum == 36255: return('Cisco Webex Room Kit Plus')
+    elif modelnum == 575: return('Cisco Dual Mode for Android')
     elif modelnum == 592: return('Cisco 3905')
     elif modelnum == 36213: return('Cisco 7811')
     elif modelnum == 621: return('Cisco 7821')

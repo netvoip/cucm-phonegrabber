@@ -19,10 +19,10 @@ Check your connection by opening that link browser
 
 ### Usage
 Starting from 9 version, CUCM AXL response is limited to ~1000 items. If you have more than 1000 active devices, you need to split your request into smaller ones grouped by directory number, name or IP (only one parameter per request) and model.
-`python get_phones_sn.py -num 1*` - phones with number starting from 1
-`python get_phones_sn.py -name SEP*` - all hardware phones
-`python get_phones_sn.py -model 621` - internal Cisco model number is used, see [RisPort70 API Reference](https://developer.cisco.com/docs/sxml/#risport70-api-reference)
-`python get_phones_sn.py -ip 192.168.* -max 10` - phones in 192.168.0.0/16 network, limit to 10 items
+`python get_phones_sn.py -num 1*` - phones with number starting from 1  
+`python get_phones_sn.py -name SEP*` - all hardware phones  
+`python get_phones_sn.py -model 621` - internal Cisco model number is used, see [RisPort70 API Reference](https://developer.cisco.com/docs/sxml/#risport70-api-reference)  
+`python get_phones_sn.py -ip 192.168.* -max 10` - phones in 192.168.0.0/16 network, limit to 10 items  
 
 Results are printed in csv format so it can be easily converted to xls for further processing.
 
