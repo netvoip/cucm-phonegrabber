@@ -93,6 +93,7 @@ def modelname(modelnum=0):
     elif modelnum == 621: return('Cisco 7821')
     elif modelnum == 623: return('Cisco 7861')
     elif modelnum == 683: return('Cisco 8841')
+    elif modelnum == 684: return('Cisco 8851')
     elif modelnum == 685: return('Cisco 8861')
     elif modelnum == 495: return('Cisco 6921')
     elif modelnum == 497: return('Cisco 6961')
@@ -131,16 +132,16 @@ def extract_sn(ip, model, num, desc):
     sn = ''
     if (model == 'Cisco 7811') or (model == 'Cisco 7861'):
         weburl = 'http://{}/CGI/Java/Serviceability'.format(ip)
-        sn_regex = '</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
+        sn_regex = r'</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
     elif model == 'Cisco 3905':
         weburl = 'http://{}/Device_Information.html'.format(ip)
-        sn_regex = '<td><p><b>([A-Z]{3}\w{8})</b></p></td>'
+        sn_regex = r'<td><p><b>([A-Z]{3}\w{8})</b></p></td>'
     elif (model == 'Cisco 6961') or (model == 'Cisco 6921'):
         weburl = 'http://{}'.format(ip)
-        sn_regex = '</TD><TD><strong>([A-Z]{3}\w{8})</strong></TD>'
+        sn_regex = r'</TD><TD><strong>([A-Z]{3}\w{8})</strong></TD>'
     else:
         weburl = 'http://{}'.format(ip)
-        sn_regex = '</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
+        sn_regex = r'</TD><TD><B>([A-Z]{3}\w{8})</B></TD>'
 
     if (model == 'Cisco Jabber') or (model == 'Third-party SIP Device'):
         sn = 'Not supported'

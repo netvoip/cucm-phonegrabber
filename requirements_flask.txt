@@ -11,7 +11,7 @@ idna==3.4
 isodate==0.6.1
 itsdangerous==2.1.2
 Jinja2==3.1.2
-lxml==4.9.1
+lxml
 MarkupSafe==2.1.1
 pip==22.3.1
 platformdirs==2.5.4
