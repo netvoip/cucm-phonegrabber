@@ -63,6 +63,7 @@ def cucm_rt_phones(model = 255, name = '', num = '', ip = '', max = 1000, Print 
     transport = Transport(cache=SqliteCache(), session=session, timeout=5)
     history = HistoryPlugin()
     client = Client(wsdl=riswsdl, transport=transport, plugins=[history])
+    client.service._binding_options['address'] = f'https://{cucmhost}:8443/realtimeservice2/services/RISService70'
 
     def show_history():
         for item in [history.last_sent, history.last_received]:
